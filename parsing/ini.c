@@ -32,18 +32,18 @@ struct parsed_ini parse_ini(char* string)
             for (int j = 0; j < strlen(splitstring[i]); j++)
             {
                  if(splitstring[i][j] == '='){
-                     eqindex = i;
+                     eqindex = j;
                      break;
                  }
             }
         kvp.key = (char*)malloc(strlen(currtag) + eqindex + 2);
-        memcpy(&kvp.key,currtag,strlen(currtag));
+        memcpy(kvp.key,currtag,strlen(currtag));
         kvp.key[strlen(currtag)] = '.';
-        memcpy(&kvp.key + strlen(currtag) + 1,splitstring[i],eqindex);
-        kvp.key[eqindex] = 0;
+        memcpy(kvp.key + strlen(currtag) + 1,splitstring[i],eqindex);
+        kvp.key[strlen(currtag) + eqindex + 1] = 0;
 
         kvp.value = (char*)malloc(strlen(splitstring[i]) - eqindex);
-        memcpy(&kvp.value,&splitstring[i][eqindex + 1],strlen(splitstring[i]) - eqindex - 1);
+        memcpy(kvp.value,&splitstring[i][eqindex + 1],strlen(splitstring[i]) - eqindex - 1);
         kvp.value[strlen(splitstring[i]) - eqindex] = 0;
 
         vector_push_back(&kvps,kvp);
