@@ -60,5 +60,4 @@ struct tar_header *find_file(struct tar_contents *findin, uint8_t *name) {
     }
     return 0;
 }
-
 #endif
