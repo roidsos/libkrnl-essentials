@@ -1,6 +1,6 @@
 #include "rtc.h"
 
-#include <io/portio.h>
+#include <arch/x86/io/portio.h>
 
 // BCD == binary coded decimal
 // its like fucking around with the bits

@@ -1,6 +1,7 @@
 #ifdef HEAP_ACCESSABLE
 #include "ini.h"
-#include <arch/x86/essential.h>
+#include <klibc/memory.h>
+#include <types/stdtypes.h>
 #include <types/string.h>
 #include <types/vector.h>
 #include <utils/heapdef.h>
@@ -14,7 +15,7 @@ struct parsed_ini parse_ini(char *string) {
     char **splitstring = split(string, '\n');
     for (size_t i = 0; splitstring[i]; i++) {
         if (splitstring[i][0] == '[') {
-            for (int j = 1; j < strlen(splitstring[i]) - 1; j++) {
+            for (size_t j = 1; j < strlen(splitstring[i]) - 1; j++) {
                 if (splitstring[i][j] == ']') {
                     currtag[j - 1] = 0;
                 } else {
@@ -24,7 +25,7 @@ struct parsed_ini parse_ini(char *string) {
 
         } else {
             struct key_value_pair kvp;
-            for (int j = 0; j < strlen(splitstring[i]); j++) {
+            for (size_t j = 0; j < strlen(splitstring[i]); j++) {
                 if (splitstring[i][j] == '=') {
                     eqindex = j;
                     break;

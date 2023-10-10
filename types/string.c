@@ -1,37 +1,62 @@
 #include "types/stdtypes.h"
 
-uint8_t strlen(char *str) {
-    uint8_t i = 0;
-    while (str[i] != 0) {
-        i++;
+char *strcpy(char *dest, const char *src) {
+    size_t i;
+
+    for (i = 0; src[i]; i++) {
+        dest[i] = src[i];
     }
-    return i;
+
+    dest[i] = 0;
+
+    return dest;
 }
 
-bool strcmp(char *str1, char *str2) {
-    int i = 0;
-    if (strlen(str1) != strlen(str2))
-        return false;
-    while (str1[i] != 0 && str2[i] != 0) {
-        if (str1[i] != str2[i]) {
-            return false;
-        }
-        i++;
+char *strncpy(char *dest, const char *src, size_t n) {
+    size_t i;
+
+    for (i = 0; i < n && src[i]; i++) {
+        dest[i] = src[i];
     }
-    return true;
+    for ( ; i < n; i++) {
+        dest[i] = 0;
+    }
+
+    return dest;
 }
 
-bool strncmp(char *str1, char *str2, int n) {
-    int i = 0;
-    if (strlen(str1) < n || strlen(str2) < n)
-        return false;
-    while (str1[i] != 0 && str2[i] != 0) {
-        if (str1[i] != str2[i] && i > n) {
-            return false;
+int strcmp(const char *s1, const char *s2) {
+    for (size_t i = 0; ; i++) {
+        char c1 = s1[i], c2 = s2[i];
+        if (c1 != c2) {
+            return c1 - c2;
         }
-        i++;
+        if (!c1) {
+            return 0;
+        }
     }
-    return true;
+}
+
+int strncmp(const char *s1, const char *s2, size_t n) {
+    for (size_t i = 0; i < n; i++) {
+        char c1 = s1[i], c2 = s2[i];
+        if (c1 != c2) {
+            return c1 - c2;
+        }
+        if (!c1) {
+            return 0;
+        }
+    }
+
+    return 0;
+}
+
+size_t strlen(const char *str) {
+    size_t len;
+
+    for (len = 0; str[len]; len++);
+
+    return len;
 }
 
 #ifdef HEAP_ACCESSABLE

@@ -3,7 +3,7 @@
 
 #ifdef HEAP_ACCESSABLE
 #include "types/stdtypes.h"
-#include "arch/x86/essential.h"
+#include "klibc/memory.h"
 #include "utils/heapdef.h"
 
 #define queue(type, name) struct { \
