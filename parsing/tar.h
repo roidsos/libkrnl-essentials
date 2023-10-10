@@ -25,7 +25,7 @@ struct tar_contents
     struct tar_header** headers;
 };
 uint32_t parse_size(uint8_t *in);
-struct tar_header* find_file(struct tar_contents* findin,uint8_t* name);
+struct tar_header* find_file(struct tar_contents* findin,char* name);
 struct tar_contents parse_tar(struct tar_header* header,uint64_t file_size);
 
 

@@ -47,12 +47,12 @@ struct tar_contents parse_tar(struct tar_header *header,
         i++;
     }
 }
-struct tar_header *find_file(struct tar_contents *findin, uint8_t *name) {
+struct tar_header *find_file(struct tar_contents *findin, char *name) {
     for (size_t i = 0; i < findin->hdr_num; i++) {
         struct tar_header *hdr = findin->headers[i];
         uint8_t right = 0;
         for (size_t j = 0; j < strlen((char *)name); j++) {
-            if (name[i] == hdr->filename[i]) {
+            if (name[j] == hdr->filename[j]) {
                 right++;
             }
         }
