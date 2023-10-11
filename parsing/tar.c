@@ -42,7 +42,7 @@ struct tar_contents parse_tar(struct tar_header *header,
             (struct tar_header *)((uint64_t)_header + ((size / 512) + 1) * 512);
 
         if (size % 512)
-            _header += 512;
+            _header = (struct tar_header *)((uint64_t)_header + 512);
 
         i++;
     }
