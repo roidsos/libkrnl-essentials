@@ -1,11 +1,15 @@
 [bits 64]
 extern DefaultGDT
+extern gdt_preload
 gdtr:
 dw 47
 dq DefaultGDT
 
 load_default_gdt:   
+    call gdt_preload
     lgdt [gdtr]
+    ;mov ax, 0x50
+    ;ltr ax
     mov ax, 0x10
     mov ds, ax
     mov es, ax
