@@ -1,6 +1,34 @@
-#include "types/stdtypes.h"
+#include "stdtypes.h"
+#include "string.h"
 
-char *strcpy(char *dest, const char *src) {
+void str_reverse(char *s) {
+    size_t i = 0;
+    size_t j = strlen(s) - 1;
+    char tmp;
+    while (i < j) {
+        tmp = s[i];
+        s[i] = s[j];
+        s[j] = tmp;
+        i++;
+        j--;
+    }
+}
+
+void str_cat(char *s1, char *s2) {
+    char *start = s1;
+    while(*start != '\0') start++;
+    while(*s2 != '\0') *start++ = *s2++;
+    *start = '\0';
+}
+
+void str_append(char *s, char c) {
+    size_t i = 0;
+    while (s[i] != '\0') i++;
+    s[i] = c;
+    s[i+1] = '\0';
+}
+
+char *strcpy(char *dest, char *src) {
     size_t i;
 
     for (i = 0; src[i]; i++) {
@@ -12,7 +40,7 @@ char *strcpy(char *dest, const char *src) {
     return dest;
 }
 
-char *strncpy(char *dest, const char *src, size_t n) {
+char *strncpy(char *dest, char *src, size_t n) {
     size_t i;
 
     for (i = 0; i < n && src[i]; i++) {
@@ -25,7 +53,7 @@ char *strncpy(char *dest, const char *src, size_t n) {
     return dest;
 }
 
-int strcmp(const char *s1, const char *s2) {
+int strcmp(char *s1, char *s2) {
     for (size_t i = 0; ; i++) {
         char c1 = s1[i], c2 = s2[i];
         if (c1 != c2) {
@@ -37,7 +65,7 @@ int strcmp(const char *s1, const char *s2) {
     }
 }
 
-int strncmp(const char *s1, const char *s2, size_t n) {
+int strncmp(char *s1, char *s2, size_t n) {
     for (size_t i = 0; i < n; i++) {
         char c1 = s1[i], c2 = s2[i];
         if (c1 != c2) {
@@ -51,7 +79,7 @@ int strncmp(const char *s1, const char *s2, size_t n) {
     return 0;
 }
 
-size_t strlen(const char *str) {
+size_t strlen(char *str) {
     size_t len;
 
     for (len = 0; str[len]; len++);
