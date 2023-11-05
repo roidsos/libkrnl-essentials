@@ -1,6 +1,56 @@
-#include "stdtypes.h"
 #include "string.h"
+#include "stdtypes.h"
 
+char *strpbrk(const char *str, const char *charset) {
+    while (*str != '\0') {
+        const char *c = charset;
+        while (*c != '\0') {
+            if (*str == *c) {
+                return (char *)str;
+            }
+            c++;
+        }
+        str++;
+    }
+    return NULL;
+}
+
+char *strtok(char *str, const char *delim) {
+    static char *token = NULL;
+
+    if (str != NULL) {
+        token = str;
+    } else if (token == NULL) {
+        return NULL;
+    }
+
+    char *start = token;
+    char *end = strpbrk(start, delim);
+
+    if (end != NULL) {
+        *end = '\0';
+        token = end + 1;
+    } else {
+        token = NULL;
+    }
+
+    return start;
+}
+
+char *strchr(const char *str, int c) {
+    while (*str != '\0') {
+        if (*str == c) {
+            return (char *)str;
+        }
+        str++;
+    }
+
+    if (c == '\0') {
+        return (char *)str;
+    }
+
+    return NULL;
+}
 void str_reverse(char *s) {
     size_t i = 0;
     size_t j = strlen(s) - 1;
@@ -14,18 +64,21 @@ void str_reverse(char *s) {
     }
 }
 
-void str_cat(char *s1, char *s2) {
+void strcat(char *s1, char *s2) {
     char *start = s1;
-    while(*start != '\0') start++;
-    while(*s2 != '\0') *start++ = *s2++;
+    while (*start != '\0')
+        start++;
+    while (*s2 != '\0')
+        *start++ = *s2++;
     *start = '\0';
 }
 
 void str_append(char *s, char c) {
     size_t i = 0;
-    while (s[i] != '\0') i++;
+    while (s[i] != '\0')
+        i++;
     s[i] = c;
-    s[i+1] = '\0';
+    s[i + 1] = '\0';
 }
 
 char *strcpy(char *dest, char *src) {
@@ -46,7 +99,7 @@ char *strncpy(char *dest, char *src, size_t n) {
     for (i = 0; i < n && src[i]; i++) {
         dest[i] = src[i];
     }
-    for ( ; i < n; i++) {
+    for (; i < n; i++) {
         dest[i] = 0;
     }
 
@@ -54,7 +107,7 @@ char *strncpy(char *dest, char *src, size_t n) {
 }
 
 int strcmp(char *s1, char *s2) {
-    for (size_t i = 0; ; i++) {
+    for (size_t i = 0;; i++) {
         char c1 = s1[i], c2 = s2[i];
         if (c1 != c2) {
             return c1 - c2;
@@ -82,7 +135,8 @@ int strncmp(char *s1, char *s2, size_t n) {
 size_t strlen(char *str) {
     size_t len;
 
-    for (len = 0; str[len]; len++);
+    for (len = 0; str[len]; len++)
+        ;
 
     return len;
 }
@@ -122,4 +176,17 @@ char **split(char *str, char spliton) {
     substrings[substr_index] = NULL;
     return substrings;
 }
+
+void split_free(char **substrings) {
+    if (substrings == NULL) {
+        return;
+    }
+
+    for (int i = 0; substrings[i] != NULL; i++) {
+        free(substrings[i]);
+    }
+
+    free(substrings);
+}
+
 #endif

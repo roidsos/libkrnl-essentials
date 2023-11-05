@@ -1,5 +1,4 @@
 #include "bitmap.h"
-#include <logging/logger.h>
 
 // Bit Magic: dont touch unless you have 2000000 IQ
 // it took me half an hour in godbolt.org to figure out
