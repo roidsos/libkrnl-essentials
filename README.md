@@ -4,8 +4,6 @@ just a kernel library.
 ## Features
 ### x86 specific stuff
 essentials,cpuid,floating point initialization and an RTC driver all included
-### Ezgdt
-a 64 bit drop-in GDT with ring 0,1,2 and 3 code and data segmants
 ### utilities
 just some utils :P
 ### types
