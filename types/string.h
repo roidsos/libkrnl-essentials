@@ -13,8 +13,3 @@ void strcat(char *s1, char *s2);
 int strcmp(char *s1, char *s2);
 int strncmp(char *s1, char *s2, size_t n);
 size_t strlen(char *str);
-
-#ifdef HEAP_ACCESSABLE
-char** split(char* str,char spliton);
-void split_free(char **substrings);
-#endif
