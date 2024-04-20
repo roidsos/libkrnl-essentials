@@ -2,9 +2,9 @@
 #define __KRNLINCL_H__
 
 #include "essentials.h"
-#include "arch/x86/drop-in/ezgdt.h"
-#include "arch/x86/cpu.h"
-#include "arch/x86/power.h"
-#include "arch/x86/rtc.h"
+#include "arch/x86_64/drop-in/ezgdt.h"
+#include "arch/x86_64/cpu.h"
+#include "arch/x86_64/power.h"
+#include "arch/x86_64/rtc.h"
 
 #endif // __KRNLINCL_H__

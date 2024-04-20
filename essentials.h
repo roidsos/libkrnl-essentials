@@ -1,7 +1,7 @@
 #ifndef __ESSENTIALS_H__
 #define __ESSENTIALS_H__
 
-#include "arch/x86/io/portio.h"
+#include "arch/x86_64/io/portio.h"
 #include "types/stdtypes.h"
 #include "klibc/memory.h"
 

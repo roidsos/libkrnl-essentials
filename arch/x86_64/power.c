@@ -1,4 +1,4 @@
-#include <arch/x86/io/portio.h>
+#include <arch/x86_64/io/portio.h>
 
 void sys_reboot() {
     char good = 0x02;
