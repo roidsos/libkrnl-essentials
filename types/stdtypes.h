@@ -10,4 +10,7 @@
 #include <float.h>
 #endif
 
+// handy macro that is needed almost as often as the types
+#define UNUSED __attribute__((unused))
+
 #endif // __STDTYPES_H__
