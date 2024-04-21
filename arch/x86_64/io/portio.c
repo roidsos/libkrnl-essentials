@@ -1,7 +1,7 @@
 #include "portio.h"
-#define UNUSED 0x80
+#define PORT_UNUSED 0x80
 
-void iowait() { outb8(UNUSED, 0); }
+void iowait() { outb8(PORT_UNUSED, 0); }
 
 // output functions
 
