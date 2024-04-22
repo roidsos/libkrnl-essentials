@@ -1,5 +1,19 @@
 #include "string.h"
 
+void *memchr(const void *s, int c, size_t n)
+{
+	const unsigned char uc = c;
+	const unsigned char *su;
+
+	for (su = s; n > 0; ++su, --n) {
+		if (*su == uc) {
+			return (void *)su;
+		}
+	}
+
+	return NULL;
+}
+
 int memcmp(const void *s1, const void *s2, size_t n)
 {
 	const unsigned char *su1;
