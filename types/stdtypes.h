@@ -7,7 +7,7 @@
 #include <limits.h>
 
 #ifdef SUPPORT_FLOAT
-#include <float.h>
+    #include <float.h>
 #endif
 
 // handy macro that is needed almost as often as the types

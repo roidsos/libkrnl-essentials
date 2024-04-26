@@ -151,7 +151,7 @@ int strncmp(const char *s1, const char *s2, size_t n)
 	return 0;
 }
 
-char *strncpy(char *, const char *, size_t)
+char *strncpy(char *s1, const char *s2, size_t n)
 {
 	char *s;
 
