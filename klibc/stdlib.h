@@ -5,4 +5,5 @@ int atoi(char *s);
 
 // Halt and catch fire function.
 void hcf(void);
+void hlt(void);
 #endif // __STDLIB_H__

@@ -1,4 +1,4 @@
-
+#include <types/stdtypes.h>
 
 int atoi(char *s) {
     int i = 0;
@@ -13,6 +13,11 @@ int atoi(char *s) {
 void hcf(void) {
     __asm__ volatile("cli");
     for (;;) {
+        __asm__ volatile("hlt");
+    }
+}
+void hlt(void) {
+    while (true) {
         __asm__ volatile("hlt");
     }
 }

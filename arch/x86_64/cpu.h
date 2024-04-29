@@ -97,4 +97,8 @@ void cpuid(uint32_t eax, uint32_t *a, uint32_t *b, uint32_t *c, uint32_t *d);
 void get_cpu_capabilities(CPUInfo *cpuInfo);
 int sys_init_fpu();
 
+void rdmsr(uint32_t msr, uint32_t *lo, uint32_t *hi);
+void wrmsr(uint32_t msr, uint32_t lo, uint32_t hi);
+uint64_t read_tsc();
+
 #endif // __CPU_H__

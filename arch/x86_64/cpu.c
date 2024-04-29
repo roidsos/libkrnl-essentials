@@ -58,3 +58,20 @@ int sys_init_fpu() {
     asm volatile("mov %rax, %cr4");
     return 0;
 }
+
+void rdmsr(uint32_t msr, uint32_t *lo, uint32_t *hi)
+{
+    asm volatile("rdmsr" : "=a"(*lo), "=d"(*hi) : "c"(msr));
+}
+
+void wrmsr(uint32_t msr, uint32_t lo, uint32_t hi)
+{
+    asm volatile("wrmsr" : : "a"(lo), "d"(hi), "c"(msr));
+}
+
+uint64_t read_tsc()
+{
+    uint64_t result;
+    __asm__ volatile("rdtsc" : "=A"(result));
+    return result;
+}
