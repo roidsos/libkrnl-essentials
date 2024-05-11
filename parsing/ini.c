@@ -1,8 +1,8 @@
 #ifdef HEAP_ACCESSABLE
 #include "ini.h"
-#include <klibc/memory.h>
+#include <klibc/string.h>
 #include <types/stdtypes.h>
-#include <types/string.h>
+#include <klibc/string.h>
 #include <types/vector.h>
 #include <utils/heapdef.h>
 

@@ -2,6 +2,7 @@
 #include "tar.h"
 #include "klibc/string.h"
 #include "types/vector.h"
+#include <utils/log.h>
 // turns out, the idiots who designed tar, encoded the size into a base 8 string
 // :facepalm:
 uint32_t parse_size(uint8_t *in) {
@@ -50,13 +51,7 @@ struct tar_contents parse_tar(struct tar_header *header,
 struct tar_header *find_file(struct tar_contents *findin, char *name) {
     for (size_t i = 0; i < findin->hdr_num; i++) {
         struct tar_header *hdr = findin->headers[i];
-        uint8_t right = 0;
-        for (size_t j = 0; j < strlen((char *)name); j++) {
-            if (name[j] == hdr->filename[j]) {
-                right++;
-            }
-        }
-        if (right == strlen((char *)name)) {
+        if (strcmp((char*)hdr->filename, name) == 0) {
             return hdr;
         }
     }

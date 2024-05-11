@@ -18,5 +18,6 @@ int strncmp(const char *, const char *, size_t);
 char *strncpy(char *, const char *, size_t);
 size_t strspn(const char *, const char *);
 char *strtok(char *, const char *);
+char *strchr(const char *s, int c);
 
 #endif // __STRING_H__
