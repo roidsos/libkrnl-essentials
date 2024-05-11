@@ -3,7 +3,7 @@
 
 #ifdef HEAP_ACCESSABLE
 #include "types/stdtypes.h"
-#include "klibc/memory.h"
+#include "klibc/string.h"
 #include "utils/heapdef.h"
 
 #define vector_struct(type) \
