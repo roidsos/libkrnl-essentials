@@ -1,7 +1,6 @@
 #ifdef HEAP_ACCESSABLE
 #include "tar.h"
 #include "types/vector.h"
-#include <utils/log.h>
 // turns out, the idiots who designed tar, encoded the size into a base 8 string
 // :facepalm:
 uint32_t parse_size(uint8_t *in) {
