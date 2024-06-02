@@ -1,3 +1,5 @@
+# DEPRICATED, please do not use it
+
 # libkrnl-essentials
 just a kernel library.
 
